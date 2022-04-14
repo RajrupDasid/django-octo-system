@@ -1,3 +1,12 @@
 from django.test import TestCase
+from .models import Post
 
-# Create your tests here.
+
+class PostTestCase(TestCase):
+    def setUp(self):
+        self.blog = Post.objects.create(title='Linux', author='Linux', slug='Linux')
+
+    def test_post_model(self):
+        d = self.blog
+        self.assertTrue(isinstance(d, Post))
+        self.assertEqual(str(d), 'Linux')
